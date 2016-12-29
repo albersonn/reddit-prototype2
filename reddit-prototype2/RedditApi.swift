@@ -13,7 +13,7 @@ class RedditApi {
     
     func getFrontPage(handler: @escaping (Data?, URLResponse?, Error?) -> Swift.Void) {
         
-        guard let url = URL(string: "\(baseUrl)/r/frontpage/hot.json?limit=50") else {
+        guard let url = URL(string: "\(baseUrl)/hot.json?limit=50") else {
             return;
         }
         var request = URLRequest(url: url)

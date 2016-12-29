@@ -47,21 +47,12 @@ class FirstViewController: UIViewController, UITableViewDataSource {
         cell.poitsLabel.text = "\(link.ups) upvotes"
         
         if let url = URL(string: link.thumbnail) {
-            NetworkUtils().getDataFrom(url: url, completion: {
-                data, response, error in
-                guard let data = data, error == nil else {
-                    print(error!)
-                    return
-                }
-                DispatchQueue.main.async {
-                    cell.thumbView?.image = UIImage(data: data)
-                }
-            })
+            cell.thumbView.downloadFrom(url: url, contentMode: UIViewContentMode.scaleAspectFit)
         }
         return cell
     }
     
-    func tableView(_ ßtableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return links.count
     }
 

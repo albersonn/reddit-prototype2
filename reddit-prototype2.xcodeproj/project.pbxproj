@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E967E4D1E15892B0022E4A8 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E967E4C1E15892B0022E4A8 /* UIImageViewExtension.swift */; };
 		1EA9A5D21E142C07003EC7DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9A5D11E142C07003EC7DA /* AppDelegate.swift */; };
 		1EA9A5D41E142C07003EC7DA /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9A5D31E142C07003EC7DA /* FirstViewController.swift */; };
 		1EA9A5D61E142C07003EC7DA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9A5D51E142C07003EC7DA /* SecondViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E967E4C1E15892B0022E4A8 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		1EA9A5CE1E142C07003EC7DA /* reddit-prototype2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "reddit-prototype2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA9A5D11E142C07003EC7DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EA9A5D31E142C07003EC7DA /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E967E4B1E1589040022E4A8 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1E967E4C1E15892B0022E4A8 /* UIImageViewExtension.swift */,
+			);
+			name = extensions;
+			sourceTree = "<group>";
+		};
 		1EA9A5C51E142C07003EC7DA = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +76,7 @@
 		1EA9A5D01E142C07003EC7DA /* reddit-prototype2 */ = {
 			isa = PBXGroup;
 			children = (
+				1E967E4B1E1589040022E4A8 /* extensions */,
 				1EA9A5E91E1459D7003EC7DA /* models */,
 				1EA9A5D11E142C07003EC7DA /* AppDelegate.swift */,
 				1EA9A5D31E142C07003EC7DA /* FirstViewController.swift */,
@@ -167,6 +178,7 @@
 				1EA9A5D21E142C07003EC7DA /* AppDelegate.swift in Sources */,
 				1EA9A5E61E142DF4003EC7DA /* ThirdViewController.swift in Sources */,
 				1EA9A5ED1E1464C0003EC7DA /* LinkTableCell.swift in Sources */,
+				1E967E4D1E15892B0022E4A8 /* UIImageViewExtension.swift in Sources */,
 				1EA9A5EB1E1459E7003EC7DA /* Link.swift in Sources */,
 				1EA9A5D41E142C07003EC7DA /* FirstViewController.swift in Sources */,
 				1EA9A5E81E144EF6003EC7DA /* RedditApi.swift in Sources */,
@@ -329,6 +341,7 @@
 				1EA9A5E41E142C07003EC7DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
