@@ -8,18 +8,62 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, UITableViewDataSource {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBAction func fetchApi() {
+        links.removeAll()
+        tableView?.reloadData()
+        
+        RedditApi().getFrontPage(handler: asyncHandler)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var links: Array<Link> = []
+    
+    func asyncHandler(data:Data?, response:URLResponse?, error: Error?) {
+        if let data = data {
+            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as! [String: Any] {
+                if let children = (json["data"] as? [String: Any])?["children"] as? [[String: Any]] {
+                    for child in children {
+                        let kind = child["kind"] as! String
+                        if (kind == "t3") {
+                            if let link = Link(json: child["data"] as! [String : AnyObject]) {
+                                links.append(link)
+                            }
+                        }
+                    }
+                }
+            }
+            tableView?.reloadData()
+        }
     }
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "linkcell") as! LinkTableCell
+        let link = links[indexPath.row]
+        cell.linkLabel.text = link.url
+        cell.titleLabel.text = link.title
+        cell.poitsLabel.text = "\(link.ups) upvotes"
+        
+        if let url = URL(string: link.thumbnail) {
+            NetworkUtils().getDataFrom(url: url, completion: {
+                data, response, error in
+                guard let data = data, error == nil else {
+                    print(error!)
+                    return
+                }
+                DispatchQueue.main.async {
+                    cell.thumbView?.image = UIImage(data: data)
+                }
+            })
+        }
+        return cell
+    }
+    
+    func tableView(_ ßtableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return links.count
+    }
 
 }
 
